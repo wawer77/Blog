@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @articele = Article.find(params[:id])
+    @article = Article.find(params[:id])
   end
 
   def new
