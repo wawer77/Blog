@@ -1,7 +1,14 @@
 class ArticlesController < ApplicationController
 
-  def new
+  def index
+    @articles =Article.all
+  end
 
+  def show
+    @articele = Article.find(params[:id])
+  end
+
+  def new
   end
 
   def create
@@ -10,6 +17,7 @@ class ArticlesController < ApplicationController
     redirect_to @article
     #if function for saving or not to be added
   end
+
 
 
   #PRIVATE methods
