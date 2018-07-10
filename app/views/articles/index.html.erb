@@ -1,0 +1,22 @@
+<h1>List of articles</h1>
+
+<% if current_user.admin? %>
+<%= link_to 'New article', new_article_path %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Show', article_path(article) %></td>
+    </tr>
+      <% end %>
+      <% #to be added links via title + shortened text %>
+</table>
