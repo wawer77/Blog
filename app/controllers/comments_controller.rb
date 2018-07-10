@@ -5,8 +5,6 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @user_id = @article.comment.user_id
-    @user = Article.find(params[:user_id])
   end
 
   def new
@@ -27,10 +25,26 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.find(params[:id])
+    @comment.update(comment_params)
+    redirect_to @article
+  end
+
+  def destroy
+    @article = Article.find(params[:article_id])
+    @comment = @article.comments.find(params[:id])
+    @comment.destroy
+    redirect_to @article
   end
 
   private
     def comment_params
-      params.require(:comment).permit(:body, :user_id)
+      params.require(:comment).permit(:body)
     end
 end
