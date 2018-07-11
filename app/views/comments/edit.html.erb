@@ -1,11 +1,11 @@
 
 <h1>Edit comment</h1>
 
-<%= form_with(model: [@article, @comment], local: true) do |form| %>
+<%= form_with(model: [@article, @comment], local: true, class: "field") do |form| %>
 
   <p>
     <%= form.label :body %><br>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class: "form-control" %>
   </p>
 
   <p>
