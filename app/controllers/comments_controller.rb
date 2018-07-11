@@ -16,7 +16,6 @@ class CommentsController < ApplicationController
     @comment = @article.comments.create(comment_params)
     @comment.user = current_user
     if @comment.save
-      flash[:success] = "Comment added"
       redirect_to @article
     else
       flash[:alert] = "Sth went wrong"
@@ -33,6 +32,7 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
     @comment.update(comment_params)
+
     redirect_to @article
   end
 

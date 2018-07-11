@@ -17,9 +17,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.save
-    redirect_to @article
-    # if function for saving or not to be added
+    if @article.save
+      redirect_to @article
+    else
+      flash.now[:alert] = "Something went wrong!"
+      render 'new'
+    end
   end
 
   def update
@@ -34,12 +37,9 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
-  # PRIVATE methods
-
   private
 
   def article_params
     params.require(:article).permit(:title, :text)
   end
-
 end
