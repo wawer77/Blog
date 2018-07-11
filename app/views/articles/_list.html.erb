@@ -1,0 +1,11 @@
+<div class = "panel">
+  <% @articles.each do |article| %>
+  <div class = "panel heading">
+    <%= link_to "#{article.title}", article_path(article), class: "heading" %>
+    <p>
+      <%= article.text[0, 300] %>...
+    </p>
+  </div>
+      <% end %>
+</div>
+</table>
