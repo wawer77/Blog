@@ -1,0 +1,20 @@
+
+<h1>Edit article</h1>
+
+<%= form_with(model: @article, local: true, class: "field") do |form| %>
+
+  <p>
+    <%= form.label :title %><br>
+    <%= form.text_field :title, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= form.label :text %><br>
+    <%= form.text_area :text, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+  <%= link_to 'Cancel and go back', @article %>
