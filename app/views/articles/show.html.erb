@@ -1,41 +1,18 @@
 <h1><%= @article.title %></h1>
-<p><%= @article.text %></p>
-<% if current_user.admin? %>
+<div class=textfield>
+  <p><%= @article.text %></p>
+</div>
+<% if user_signed_in? && current_user.admin? %>
 <%= link_to 'Edit', edit_article_path %>
 <%= link_to 'Delete', article_path,
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
 <% end %>
-              <%= link_to 'Back to the list', articles_path %><br>
-<% #COMMENTS %>
-<h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>User email: </strong>
-    <%= comment.user.email %>
-  </p>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-  <% if comment.user == current_user || current_user.admin? %>
-  <p>
-    <%= link_to 'Delete', [comment.article, comment], method: :delete %>
-    <%= link_to 'Edit', edit_article_comment_path(comment.article, comment) %>
-  </p>
-  <% end %>
-<% end %>
 
-<% if user_signed_in? %>
+<% #COMMENTS %>
+<%= render 'comments/comment-list' %>
+
 <% #ADD A COMMENT %>
-<h2>Add a comment:</h2>
-    <%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
-      <p>
-        <%= form.label :body %><br>
-        <%= form.text_area :body %>
-      </p>
-      <p>
-        <%= form.submit %>
-      </p>
-    <% end %>
+<% if user_signed_in? %>
+<%= render 'comments/add-comments' %>
  <% end %>

@@ -1,22 +1,9 @@
-<h1>List of articles</h1>
+<div class="center jumbotron">
+<h1>Articles</h1>
 
-<% if current_user.admin? %>
+<% if user_signed_in? && current_user.admin? %>
 <%= link_to 'New article', new_article_path %>
 <% end %>
+</div>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th></th>
-  </tr>
-
-  <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-    </tr>
-      <% end %>
-      <% #to be added links via title + shortened text %>
-</table>
+<%= render 'articles/list' %>
