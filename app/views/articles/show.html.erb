@@ -1,0 +1,18 @@
+<h1><%= @article.title %></h1>
+<div class=textfield>
+  <p><%= @article.text %></p>
+<% if user_signed_in? && current_user.admin? %>
+<%= link_to 'Edit', edit_article_path %>
+<%= link_to 'Delete', article_path,
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<% #COMMENTS %>
+<%= render 'comments/comment-list' %>
+
+<% #ADD A COMMENT %>
+<% if user_signed_in? %>
+<%= render 'comments/add-comments' %>
+ <% end %>
+</div>
