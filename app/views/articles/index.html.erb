@@ -1,0 +1,9 @@
+<div class="center jumbotron">
+<h1>Articles</h1>
+
+<% if user_signed_in? && current_user.admin? %>
+<%= link_to 'New article', new_article_path %>
+<% end %>
+</div>
+
+<%= render 'articles/list' %>

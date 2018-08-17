@@ -1,0 +1,15 @@
+
+<h1>Edit comment</h1>
+
+<%= form_with(model: [@article, @comment], local: true, class: "field") do |form| %>
+
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, class: "form-control" %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+  <%= link_to 'Cancel and go back', @article %>
