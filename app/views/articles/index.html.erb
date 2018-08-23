@@ -3,7 +3,8 @@
 
 <% if user_signed_in? && current_user.admin? %>
 <%= link_to 'New article', new_article_path %>
-<% end %>
+<% end %><br>
+<%= will_paginate @articles %>
 </div>
 
 <%= render 'articles/list' %>
