@@ -42,6 +42,10 @@ textarea {
   }
 }
 
+.bground_gray {
+  background-color: $gray-medium-light
+}
+
 /* devise class */
 .field {
   @extend .col-md-6;
